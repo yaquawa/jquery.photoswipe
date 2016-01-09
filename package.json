@@ -2,7 +2,7 @@
   "name": "jquery.photoswipe",
   "version": "1.0.0",
   "description": "The jQuery plugin for PhotoSwipe",
-  "main": "index.js",
+  "main": "src/jquery.photoswipe.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
