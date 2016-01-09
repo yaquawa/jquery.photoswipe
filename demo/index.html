@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PhotoSwipe jQuery Plugin Demo</title>
+    <link rel="stylesheet" href="../node_modules/photoswipe/dist/photoswipe.css">
+    <link rel="stylesheet" href="../node_modules/photoswipe/dist/default-skin/default-skin.css">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        img {
+            cursor: zoom-in;
+        }
+    </style>
+</head>
+<body>
+
+<div id="js-gallery">
+    <img src="images/IMG_2969--thumbnail.jpg" data-original-src="images/IMG_2969.jpg" data-original-src-width="2000" data-original-src-height="2000" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt">
+    <img src="images/IMG_3012--thumbnail.jpg" data-original-src="images/IMG_3012.jpg" data-original-src-width="2000" data-original-src-height="2000" alt="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.">
+    <img src="images/IMG_3018.jpg" width="300" alt="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.">
+    <img src="images/IMG_3019.jpg" height="300" alt="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.">
+    <img src="images/PA050706.jpg" height="300">
+    <img src="images/PB210006.jpg" width="300">
+</div>
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.3/packery.pkgd.min.js"></script>
+<script src="../dist/jquery.photoswipe.js"></script>
+
+
+<script>
+    $('#js-gallery')
+            .packery({
+                itemSelector: 'img',
+                gutter: 10
+            })
+            .photoSwipe('img', {bgOpacity: 0.8}, {
+                close: function () {
+                    console.log('closed');
+                }
+            });
+</script>
+</body>
+</html>

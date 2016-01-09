@@ -1,0 +1,46 @@
+{
+  "name": "jquery.photoswipe",
+  "version": "1.0.0",
+  "description": "The jQuery plugin for PhotoSwipe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaquawa/jquery.photoswipe.git"
+  },
+  "keywords": [
+    "jQuery",
+    "lightbox",
+    "colorbox",
+    "PhotoSwipe",
+    "gallery"
+  ],
+  "author": "yaquawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaquawa/jquery.photoswipe/issues"
+  },
+  "homepage": "https://github.com/yaquawa/jquery.photoswipe#readme",
+  "devDependencies": {
+    "aliasify": "^1.8.1",
+    "browserify-shim": "^3.8.11",
+    "gulp": "^3.9.0",
+    "laravel-elixir": "^4.2.0"
+  },
+  "dependencies": {
+    "jquery": "^1.12.0",
+    "photoswipe": "^4.1.1"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "aliasify"
+    ]
+  },
+  "aliasify": "./aliasifyConfig.js",
+  "browserify-shim": {
+    "jquery": "global:jQuery"
+  }
+}
