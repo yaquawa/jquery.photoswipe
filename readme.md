@@ -15,6 +15,7 @@ Also, you can access the `PhotoSwipe` class by referring `$.fn.photoSwipe.PhotoS
 <link rel="stylesheet" href="path/to/default-skin/default-skin.css">
 
 <!-- JS file -->
+<script src="path/to/jquery.js"></script>
 <script src="path/to/jquery.photoswipe.js"></script>
 ```
 
@@ -51,11 +52,15 @@ $('#gallery').photoSwipe();
 There are three parameters of the method `photoSwipe`.
 
 ### Syntax
-`$gallery.photoSwipe(imgSelector, options, events);`
+`$gallery.photoSwipe(slideSelector, options, events);`
 
 <dl>
- <dt><code>imgSelector</code></dt>
- <dd>The selector of img tags. The Default selector is <code>'img'</code></dd>
+ <dt><code>slideSelector</code></dt>
+ <dd>
+ <p>The selector of slides, the default selector is <code>'img'</code>.</p>
+ <p>Make sure you include a <code>img</code> tag inside of the selected element, or you can just use a "bare img tag" just like the above sample markup.</p>
+ <p>If this selector indicates <code>a</code> tag, the attribute <code>href</code> will be used as the "original image url" of that image.</p>
+ </dd>
  <dt><code>options</code></dt>
  <dd>The <a href="http://photoswipe.com/documentation/options.html" target="_blank">options</a> passed to PhotoSwipe.</dd>
  <dt><code>events</code></dt>
@@ -66,7 +71,7 @@ There are three parameters of the method `photoSwipe`.
 Here is a sample code use all the three parameters.
 
 ```js
-var imgSelector = 'img',
+var slideSelector = 'img',
     options     = {bgOpacity: 0.8},
     events      = {
         close: function () {
@@ -74,11 +79,11 @@ var imgSelector = 'img',
         }
     };
 
-$('#gallery').photoSwipe(imgSelector, options, events);
+$('#gallery').photoSwipe(slideSelector, options, events);
 ```
 
-# Update
-After adding or removing slides dynamically, all you need to do is `$('#gallery').photoSwipe('update')`.
+# Update gallery
+After adding or removing slides of a gallery dynamically, all you need to do is `$('#gallery').photoSwipe('update')` to update the gallery.
 
 # ECMAScript 6
 The source code is written in ECMAScript 6 (Browserify + Babelify), so you can easily import it by

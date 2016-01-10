@@ -7,11 +7,28 @@ function _factory($) {
         .appendTo('body'),
         uid             = 1;
 
+    function getImgs($gallery) {
+        var slideSelector = getOptions($gallery).slideSelector;
+
+        return $gallery.find(slideSelector).map(function (index) {
+            var $img    = $(this).data('index', index),
+                tagName = this.tagName.toUpperCase();
+
+            if (tagName === 'A') {
+                $img = $img.find('img').eq(0);
+                $img.data('original-src', this.href);
+            }
+            else if (tagName !== 'IMG') {
+                $img = $img.find('img');
+            }
+
+            return $img[0];
+        });
+    }
+
     function getThumbBoundsFn($imgs) {
         return function _getThumbBoundsFn(index) {
-            var $img      = $imgs.filter(function () {
-                    return $(this).data('index') == index;
-                }).eq(0),
+            var $img      = $imgs.eq(index),
                 imgOffset = $img.offset(),
                 imgWidth  = $img[0].width;
 
@@ -80,16 +97,6 @@ function _factory($) {
         return $gallery.data('photoswipeOptions');
     }
 
-    function addIndex($imgs) {
-        $imgs.each(function (index) {
-            var $this  = $(this),
-                _index = $this.data('index');
-            if (!_index) {
-                $this.data('index', index);
-            }
-        });
-    }
-
     function addUID($gallery) {
         if (!$gallery.data('pswp-uid')) {
             $gallery.data('pswp-uid', uid++);
@@ -137,7 +144,7 @@ function _factory($) {
         if (hashData.pid && hashData.gid) {
             let $gallery            = $galleries[hashData.gid - 1],
                 pid                 = hashData.pid - 1,
-                $imgs               = $gallery.find(getOptions($gallery).imgSelector),
+                $imgs               = getImgs($gallery),
                 imgInfoArrayPromise = getImgInfoArray($imgs);
 
             imgInfoArrayPromise.done(function (imgInfoArray) {
@@ -147,7 +154,7 @@ function _factory($) {
     }
 
     function addClickHandler($gallery, $imgs, imgInfoArray) {
-        $gallery.on('click.photoswipe', getOptions($gallery).imgSelector, function (e) {
+        $gallery.on('click.photoswipe', getOptions($gallery).slideSelector, function (e) {
             e.preventDefault();
             openPhotoSwipe($(this).data('index'), $gallery, $imgs, imgInfoArray);
         });
@@ -158,17 +165,16 @@ function _factory($) {
     }
 
     function update($gallery) {
-        var $imgs               = $gallery.find(getOptions($gallery).imgSelector),
+        var $imgs               = getImgs($gallery),
             imgInfoArrayPromise = getImgInfoArray($imgs);
 
-        addIndex($imgs);
         imgInfoArrayPromise.done(function (imgInfoArray) {
             removeClickHandler($gallery);
             addClickHandler($gallery, $imgs, imgInfoArray);
         });
     }
 
-    $.fn.photoSwipe = function (imgSelector = 'img', options = {}, events = {}) {
+    $.fn.photoSwipe = function (slideSelector = 'img', options = {}, events = {}) {
         var defaultOptions = {
                 bgOpacity: 0.973,
                 showHideOpacity: true
@@ -178,7 +184,7 @@ function _factory($) {
 
         // Initialize each gallery
         var $galleries = [],
-            isUpdate   = imgSelector === 'update';
+            isUpdate   = slideSelector === 'update';
 
         this.each(function () {
             if (isUpdate) {
@@ -186,16 +192,14 @@ function _factory($) {
                 return;
             }
 
-            var $gallery            = $(this),
-                $imgs               = $gallery.find(imgSelector),
+            var $gallery            = $(this).data('photoswipeOptions', {slideSelector: slideSelector, globalOptions: globalOptions, events: events}), // save options
+                $imgs               = getImgs($gallery),
                 imgInfoArrayPromise = getImgInfoArray($imgs);
 
-            addIndex($imgs);
+
             addUID($gallery);
             $galleries.push($gallery);
 
-            // save options
-            $gallery.data('photoswipeOptions', {imgSelector: imgSelector, globalOptions: globalOptions, events: events});
 
             imgInfoArrayPromise.done(function (imgInfoArray) {
                 addClickHandler($gallery, $imgs, imgInfoArray);

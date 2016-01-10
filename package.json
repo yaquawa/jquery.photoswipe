@@ -1,6 +1,6 @@
 {
   "name": "jquery.photoswipe",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The jQuery plugin for PhotoSwipe",
   "main": "src/jquery.photoswipe.js",
   "scripts": {
