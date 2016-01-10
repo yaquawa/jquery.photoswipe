@@ -1,22 +1,23 @@
-var elixir = require('laravel-elixir');
-
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+var fs         = require("fs"),
+    gulp       = require("gulp"),
+    browserify = require("browserify"),
+    uglify     = require('gulp-uglify');
 
 
-elixir.config.assetsPath = 'src';
-elixir.config.publicPath = 'dist';
-elixir.config.js.folder = '';
-elixir.config.js.outputFolder = '';
+gulp.task('default', function () {
+    return browserify("./src/jquery.photoswipe.js")
+        .transform("babelify")
+        .transform("browserify-shim")
+        .bundle()
+        .pipe(fs.createWriteStream("./dist/jquery.photoswipe.js"));
+});
 
-elixir(function (mix) {
-    mix.browserify('jquery.photoswipe.js');
+gulp.task('uglify', function () {
+    return gulp.src('dist/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('watch', function () {
+    return gulp.watch('src/*.js', ['default']);
 });

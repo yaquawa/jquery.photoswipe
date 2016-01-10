@@ -1,10 +1,9 @@
 This is a jQuery plugin for the [PhotoSwipe](http://photoswipe.com/) that allow you to setup PhotoSwipe with just a few code.
 
 
-
 # Usage
 
-##Step 1. Include JS and CSS files
+## Step 1. Include JS and CSS files
 The CSS files are provided by [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe), you can find them in the [dist](https://github.com/dimsemenov/PhotoSwipe/tree/master/dist) folder of PhotoSwipe's GitHub repository.
 
 Note that this plugin already included the PhotoSwipe, so you don't have to include it yourself.   
@@ -41,7 +40,7 @@ The markup is something like this.
 </div>
 ```
 
-##Step 2. Setup PhotoSwipe
+## Step 2. Setup PhotoSwipe
 Suppose you have the above markup, then just simply call the `photoSwipe()` method, you're done.
 
 ```js
@@ -82,13 +81,12 @@ $('#gallery').photoSwipe(imgSelector, options, events);
 After adding or removing slides dynamically, all you need to do is `$('#gallery').photoSwipe('update')`.
 
 # ECMAScript 6
-The source code is written in ECMAScript 6, so you can easily import it by
+The source code is written in ECMAScript 6 (Browserify + Babelify), so you can easily import it by
 
 ```js
-import 'src/jquery.photoswipe.js'
+import 'jquery.photoswipe.js'
 ```
 
-Also you can install it by `npm install jquery.photoswipe`.
+Also you should install it by `npm install jquery.photoswipe` .
 
 Have fun!
-
