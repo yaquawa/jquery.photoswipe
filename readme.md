@@ -16,7 +16,7 @@ Also, you can access the `PhotoSwipe` class by referring `$.fn.photoSwipe.PhotoS
 
 <!-- JS file -->
 <script src="path/to/jquery.js"></script>
-<script src="path/to/jquery.photoswipe.js"></script>
+<script src="path/to/jquery.photoswipe-global.js"></script>
 ```
 
 The markup is something like this.
@@ -89,9 +89,11 @@ After adding or removing slides of a gallery dynamically, all you need to do is 
 The source code is written in ECMAScript 6 (Browserify + Babelify), so you can easily import it by
 
 ```js
-import 'jquery.photoswipe.js'
+import PhotoSwipeFactory from 'jquery.photoswipe.js';
+
+PhotoSwipeFactory(jQuery); // mount this plugin into jQuery
 ```
 
-Also you should install it by `npm install jquery.photoswipe` .
+Also you should install it by `npm install jquery.photoswipe`.
 
 Have fun!
