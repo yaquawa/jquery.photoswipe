@@ -4568,11 +4568,9 @@ function PhotoSwipeFactory($) {
     $.fn.photoSwipe.PhotoSwipe = _PhotoSwipe2.default;
 }
 
-/*
-<<<GLOBAL
+
 PhotoSwipeFactory(jQuery);
-GLOBAL;
-*/
+
 
 exports.default = PhotoSwipeFactory;
 exports.PhotoSwipe = _PhotoSwipe2.default;
