@@ -35,7 +35,7 @@ The markup is something like this.
 
     <!-- 
     If the `data-original-src` not exists, `src` will be used. 
-    If the `data-original-src-width` or `data-original-src-width` not exists, the natural width and height of this image will be used.
+    If the `data-original-src-width` or `data-original-src-width` not exists, the natural width and height of the `src` will be used.
     -->
     <img src="images/IMG_3012.jpg">
 </div>
@@ -89,7 +89,7 @@ After adding or removing slides of a gallery dynamically, all you need to do is 
 The source code is written in ECMAScript 6 (Browserify + Babelify), so you can easily import it by
 
 ```js
-import PhotoSwipeFactory from 'jquery.photoswipe.js';
+import PhotoSwipeFactory from 'jquery.photoswipe';
 
 PhotoSwipeFactory(jQuery); // mount this plugin into jQuery
 ```
