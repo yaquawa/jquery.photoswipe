@@ -60,6 +60,18 @@ function PhotoSwipeFactory($) {
     }
 
     function getImgSize($img) {
+        var original_src = decodeURI($img.data('original-src') || $img.attr('src')),
+            matches      = original_src.match(/(\d+)[*×x](\d+)/);
+
+        if (matches !== null) {
+            // resolve width and height by file name
+            let d = $.Deferred();
+            setTimeout(function () {
+                d.resolve(Number(matches[1]), Number(matches[2]));
+            }, 0);
+            return d.promise();
+        }
+
         return $.when(getWidth($img), getHeight($img));
     }
 
@@ -219,10 +231,10 @@ function PhotoSwipeFactory($) {
 
 
 /*
-<<<GLOBAL
-PhotoSwipeFactory(jQuery);
-GLOBAL;
-*/
+ <<<GLOBAL
+ PhotoSwipeFactory(jQuery);
+ GLOBAL;
+ */
 
 
 export {PhotoSwipeFactory as default, PhotoSwipe};

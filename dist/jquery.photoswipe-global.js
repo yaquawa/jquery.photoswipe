@@ -4333,6 +4333,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 },{}],3:[function(require,module,exports){
 'use strict';
 
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
+
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -4406,6 +4414,24 @@ function PhotoSwipeFactory($) {
     }
 
     function getImgSize($img) {
+        var original_src = decodeURI($img.data('original-src') || $img.attr('src')),
+            matches = original_src.match(/(\d+)[*×x](\d+)/);
+
+        if (matches !== null) {
+            var _ret = function () {
+                // resolve width and height by file name
+                var d = $.Deferred();
+                setTimeout(function () {
+                    d.resolve(Number(matches[1]), Number(matches[2]));
+                }, 0);
+                return {
+                    v: d.promise()
+                };
+            }();
+
+            if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+        }
+
         return $.when(getWidth($img), getHeight($img));
     }
 
@@ -4569,8 +4595,8 @@ function PhotoSwipeFactory($) {
 }
 
 
-PhotoSwipeFactory(jQuery);
-
+ PhotoSwipeFactory(jQuery);
+ 
 
 exports.default = PhotoSwipeFactory;
 exports.PhotoSwipe = _PhotoSwipe2.default;

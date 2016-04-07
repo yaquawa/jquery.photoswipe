@@ -36,6 +36,8 @@ The markup is something like this.
     <!-- 
     If the `data-original-src` not exists, `src` will be used. 
     If the `data-original-src-width` or `data-original-src-width` not exists, the natural width and height of the `src` will be used.
+    If the file name of `src` matches the pattern `/(\d+)[*×x](\d+)/` (e.g. images/IMG_3012-1200x800.jpg), the plugin will takes width and height from the file name.
+    (That way you don't need to specify the `data-original-src-width` and `data-original-src-width`).
     -->
     <img src="images/IMG_3012.jpg">
 </div>
