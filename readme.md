@@ -9,6 +9,8 @@ The CSS files are provided by [PhotoSwipe](https://github.com/dimsemenov/PhotoSw
 Note that this plugin already included the PhotoSwipe, so you don't have to include it yourself.   
 Also, you can access the `PhotoSwipe` class by referring `$.fn.photoSwipe.PhotoSwipe`.
 
+I recommended that you install this plugin by NPM `npm install jquery.photoswipe`.
+
 ```html
 <!-- CSS file -->
 <link rel="stylesheet" href="path/to/photoswipe.css">
@@ -98,4 +100,4 @@ PhotoSwipeFactory(jQuery); // mount this plugin into jQuery
 
 Also you should install it by `npm install jquery.photoswipe`.
 
-Have fun!
+Have fun!!
