@@ -13,6 +13,17 @@
         img {
             cursor: zoom-in;
         }
+
+        .hello {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5em;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -23,6 +34,14 @@
     </a>
     <a href="images/PA050706-1400×1050.jpg" class="slide">
         <img src="images/PA050706--thumbnail.jpg" width="450">
+    </a>
+    <a href="#my-html" class="slide">
+        <img src="images/html.jpg" width="300">
+        <div id="my-html" style="display: none;">
+            <section class="hello">
+                <h1>Hello</h1>
+            </section>
+        </div>
     </a>
     <div class="slide">
         <img src="images/PB210006.jpg" width="300">

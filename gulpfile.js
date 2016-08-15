@@ -1,34 +1,27 @@
 var gulp       = require("gulp"),
     browserify = require('browserify'),
     through2   = require('through2'),
+    source     = require('vinyl-source-stream'),
+    buffer     = require('vinyl-buffer'),
     uglify     = require('gulp-uglify'),
     replace    = require('gulp-replace'),
     rename     = require("gulp-rename");
 
-var browserified = function (options) {
-    options = Object.assign({
-        transform: []
-    }, options);
-
-    return through2.obj(function (file, enc, next) {
-        var b = browserify(file.path);
-        options.transform.forEach(function (transform) {
-            b.transform(transform);
-        });
-        b.bundle(function (err, res) {
-            // assumes file.contents is a Buffer
-            file.contents = res;
-            next(null, file);
-        });
-    })
-};
 
 gulp.task('default', function () {
 
-    return gulp.src('src/jquery.photoswipe.js')
-        .pipe(browserified({
-            transform: ['babelify', 'browserify-shim']
-        }))
+    // set up the browserify instance on a task basis
+    var b = browserify({
+        entries: 'src/jquery.photoswipe.js',
+        // debug: true,
+        // defining transforms here will avoid crashing your stream
+        // transform: ['babelify','aliasify']
+    });
+
+
+    return b.bundle()
+        .pipe(source('jquery.photoswipe.js'))
+        .pipe(buffer())
         .pipe(gulp.dest('./dist'))
         .pipe(replace(/\/\*[\s]*?<<<GLOBAL([\s\S]*?)GLOBAL;[\s]*?\*\//g, '$1'))
         .pipe(rename({

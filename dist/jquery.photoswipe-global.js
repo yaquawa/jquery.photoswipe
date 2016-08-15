@@ -124,11 +124,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				}
 				_blockControlsTap = true;
 
-				// Some versions of Android don't prevent ghost click event
+				// Some versions of Android don't prevent ghost click event 
 				// when preventDefault() was called on touchstart and/or touchend.
-				//
-				// This happens on v4.3, 4.2, 4.1,
-				// older versions strangely work correctly,
+				// 
+				// This happens on v4.3, 4.2, 4.1, 
+				// older versions strangely work correctly, 
 				// but just in case we add delay on all of them)	
 				var tapDelay = framework.features.isOldAndroid ? 600 : 30;
 				_blockControlsTapTimeout = setTimeout(function () {
@@ -142,7 +142,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		    _togglePswpClass = function _togglePswpClass(el, cName, add) {
 			framework[(add ? 'add' : 'remove') + 'Class'](el, 'pswp__' + cName);
 		},
-		   
+
 
 		// add class when there is just one item in the gallery
 		// (by default it hides left/right arrows and 1ofX counter)
@@ -287,14 +287,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						if (pswp.currItem && pswp.currItem.loading) {
 
 							if (!pswp.allowProgressiveImg() || pswp.currItem.img && !pswp.currItem.img.naturalWidth) {
-								// show preloader if progressive loading is not enabled,
+								// show preloader if progressive loading is not enabled, 
 								// or image width is not defined yet (because of slow connection)
 								_toggleLoadingIndicator(false);
 								// items-controller.js function allowProgressiveImg
 							}
 						} else {
-								_toggleLoadingIndicator(true); // hide preloader
-							}
+							_toggleLoadingIndicator(true); // hide preloader
+						}
 					}, _options.loadingIndicatorDelay);
 				});
 				_listen('imageLoadComplete', function (index, item) {
@@ -331,8 +331,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						gap.bottom = bars.top; // if no caption, set size of bottom gap to size of top
 					}
 				} else {
-						gap.bottom = bars.bottom === 'auto' ? 0 : bars.bottom;
-					}
+					gap.bottom = bars.bottom === 'auto' ? 0 : bars.bottom;
+				}
 
 				// height of top bar is static, no need to calculate it
 				gap.top = bars.top;
@@ -479,9 +479,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 								//item.style.display = 'block';
 							} else {
-									framework.addClass(item, 'pswp__element--disabled');
-									//item.style.display = 'none';
-								}
+								framework.addClass(item, 'pswp__element--disabled');
+								//item.style.display = 'none';
+							}
 						}
 					}
 				}
@@ -967,7 +967,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 					// Detect if device is iPhone or iPod and if it's older than iOS 8
 					// http://stackoverflow.com/a/14223920
-					//
+					// 
 					// This detection is made because of buggy top/bottom toolbars
 					// that don't trigger window.resize event.
 					// For more info refer to _isFixedPosition variable in core.js
@@ -1197,7 +1197,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		    _features,
 		    _windowVisibleSize = {},
 		    _renderMaxResolution = false,
-		   
+
 
 		// Registers PhotoSWipe module (History, Controller ...)
 		_registerModule = function _registerModule(name, module) {
@@ -1213,7 +1213,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 			return index;
 		},
-		   
+
 
 		// Micro bind/trigger
 		_listeners = {},
@@ -1372,7 +1372,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 			return item.w > 0 ? _options.maxSpreadZoom : 1;
 		},
-		   
+
 
 		// Return true if offset is out of the bounds
 		_modifyDestPanOffset = function _modifyDestPanOffset(axis, destPanBounds, destPanOffset, destZoomLevel) {
@@ -1614,7 +1614,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					click: _onGlobalClick
 				};
 
-				// disable show/hide effects on old browsers that don't support CSS animations or transforms,
+				// disable show/hide effects on old browsers that don't support CSS animations or transforms, 
 				// old IOS, Android and Opera mobile. Blackberry seems to work fine, even older models.
 				var oldPhone = _features.isOldIOSPhone || _features.isOldAndroid || _features.isMobileOpera;
 				if (!_features.animationName || !_features.transform || oldPhone) {
@@ -1692,8 +1692,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					_itemHolders[0].el.style.display = _itemHolders[2].el.style.display = 'block';
 
 					if (_options.focus) {
-						// focus causes layout,
-						// which causes lag during the animation,
+						// focus causes layout, 
+						// which causes lag during the animation, 
 						// that's why we delay it untill the initial zoom transition ends
 						template.focus();
 					}
@@ -1711,12 +1711,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				if (!_isFixedPosition) {
 
 					// On all versions of iOS lower than 8.0, we check size of viewport every second.
-					//
-					// This is done to detect when Safari top & bottom bars appear,
-					// as this action doesn't trigger any events (like resize).
-					//
+					// 
+					// This is done to detect when Safari top & bottom bars appear, 
+					// as this action doesn't trigger any events (like resize). 
+					// 
 					// On iOS8 they fixed this.
-					//
+					// 
 					// 10 Nov 2014: iOS 7 usage ~40%. iOS 8 usage 56%.
 
 					_updateSizeInterval = setInterval(function () {
@@ -1957,6 +1957,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 				_shout('beforeResize'); // even may be used for example to switch image sources
 
+
 				// don't re-calculate size on inital size update
 				if (_containerShiftIndex !== undefined) {
 
@@ -2087,7 +2088,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 		var _gestureStartTime,
 		    _gestureCheckSpeedTime,
-		   
+
 
 		// pool of objects that are used during dragging of zooming
 		p = {},
@@ -2161,7 +2162,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		    _canPan = function _canPan() {
 			return !(_options.scaleMode === 'fit' && _currZoomLevel === self.currItem.initialZoomLevel);
 		},
-		   
+
 
 		// find the closest parent DOM element
 		_closestElement = function _closestElement(el, fn) {
@@ -2210,7 +2211,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			var yOffset = _panOffset.y - self.currItem.initialPosition.y; // difference between initial and current position
 			return 1 - Math.abs(yOffset / (_viewportSize.y / 2));
 		},
-		   
+
 
 		// points pool, reused during touch events
 		_ePoint1 = {},
@@ -2239,17 +2240,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					_tempPointsArr[0] = _ePoint1; //_ePoint1;
 				}
 			} else {
-					_tempCounter = 0;
-					// we can use forEach, as pointer events are supported only in modern browsers
-					_currPointers.forEach(function (p) {
-						if (_tempCounter === 0) {
-							_tempPointsArr[0] = p;
-						} else if (_tempCounter === 1) {
-							_tempPointsArr[1] = p;
-						}
-						_tempCounter++;
-					});
-				}
+				_tempCounter = 0;
+				// we can use forEach, as pointer events are supported only in modern browsers
+				_currPointers.forEach(function (p) {
+					if (_tempCounter === 0) {
+						_tempPointsArr[0] = p;
+					} else if (_tempCounter === 1) {
+						_tempPointsArr[1] = p;
+					}
+					_tempCounter++;
+				});
+			}
 			return _tempPointsArr;
 		},
 		    _panOrMoveMainScroll = function _panOrMoveMainScroll(axis, delta) {
@@ -2267,12 +2268,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			// calculate fdistance over the bounds and friction
 			if (newOffset > _currPanBounds.min[axis] || newOffset < _currPanBounds.max[axis]) {
 				panFriction = _options.panEndFriction;
-				// Linear increasing of friction, so at 1/4 of viewport it's at max value.
+				// Linear increasing of friction, so at 1/4 of viewport it's at max value. 
 				// Looks not as nice as was expected. Left for history.
 				// panFriction = (1 - (_panOffset[axis] + delta[axis] + panBounds.min[axis]) / (_viewportSize[axis] / 4) );
 			} else {
-					panFriction = 1;
-				}
+				panFriction = 1;
+			}
 
 			newOffset = _panOffset[axis] + delta[axis] * panFriction;
 
@@ -2358,14 +2359,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				}
 			}
 		},
-		   
+
 
 		// Pointerdown/touchstart/mousedown handler
 		_onDragStart = function _onDragStart(e) {
 
 			// Allow dragging only via left mouse button.
 			// As this handler is not added in IE8 - we ignore e.which
-			//
+			// 
 			// http://www.quirksmode.org/js/events_properties.html
 			// https://developer.mozilla.org/en-US/docs/Web/API/event.button
 			if (e.type === 'mousedown' && e.button > 0) {
@@ -2458,7 +2459,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				_currPointsDistance = _startPointsDistance = _calculatePointsDistance(p, p2);
 			}
 		},
-		   
+
 
 		// Pointermove/touchmove/mousemove handler
 		_onDragMove = function _onDragMove(e) {
@@ -2494,8 +2495,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				}
 			}
 		},
-		   
-		//
+
+		// 
 		_renderMovement = function _renderMovement() {
 
 			if (!_currentPoints) {
@@ -2604,7 +2605,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				if (_isFirstMove) {
 					_isFirstMove = false;
 
-					// subtract drag distance that was used during the detection direction 
+					// subtract drag distance that was used during the detection direction  
 
 					if (Math.abs(delta.x) >= DIRECTION_CHECK_OFFSET) {
 						delta.x -= _currentPoints[0].x - _startPoint.x;
@@ -2653,7 +2654,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				}
 			}
 		},
-		   
+
 
 		// Pointerup/pointercancel/touchend/touchcancel/mouseup event handler
 		_onDragRelease = function _onDragRelease(e) {
@@ -2664,7 +2665,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					return;
 				}
 
-				// on Android (v4.1, 4.2, 4.3 & possibly older)
+				// on Android (v4.1, 4.2, 4.3 & possibly older) 
 				// ghost mousedown/up event isn't preventable via e.preventDefault,
 				// which causes fake mousedown event
 				// so we block mousedown/up for 600ms
@@ -2695,7 +2696,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					} else {
 						var MSPOINTER_TYPES = {
 							4: 'mouse', // event.MSPOINTER_TYPE_MOUSE
-							2: 'touch', // event.MSPOINTER_TYPE_TOUCH
+							2: 'touch', // event.MSPOINTER_TYPE_TOUCH 
 							3: 'pen' // event.MSPOINTER_TYPE_PEN
 						};
 						releasePoint.type = MSPOINTER_TYPES[e.pointerType];
@@ -2812,7 +2813,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				return;
 			}
 
-			// main scroll
+			// main scroll 
 			if ((_mainScrollShifted || _mainScrollAnimating) && numPoints === 0) {
 				var itemChanged = _finishSwipeMainScrollGesture(gestureType, _releaseAnimData);
 				if (itemChanged) {
@@ -2826,7 +2827,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				return;
 			}
 
-			// Complete simple zoom gesture (reset zoom level if it's out of the bounds) 
+			// Complete simple zoom gesture (reset zoom level if it's out of the bounds)  
 			if (gestureType !== 'swipe') {
 				_completeZoomGesture();
 				return;
@@ -2837,7 +2838,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				_completePanGesture(_releaseAnimData);
 			}
 		},
-		   
+
 
 		// Returns object with data about gesture
 		// It's created only once and then reused
@@ -2986,7 +2987,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var totalShiftDist = _currPoint.x - _startPoint.x,
 				    isFastLastFlick = _releaseAnimData.lastFlickDist.x < 10;
 
-				// if container is shifted for more than MIN_SWIPE_DISTANCE,
+				// if container is shifted for more than MIN_SWIPE_DISTANCE, 
 				// and last flick gesture was in right direction
 				if (totalShiftDist > MIN_SWIPE_DISTANCE && (isFastLastFlick || _releaseAnimData.lastFlickOffset.x > 20)) {
 					// go to prev item
@@ -3061,7 +3062,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		    _calculateZoomLevel = function _calculateZoomLevel(touchesDistance) {
 			return 1 / _startPointsDistance * touchesDistance * _startZoomLevel;
 		},
-		   
+
 
 		// Resets zoom if it's out of bounds
 		_completeZoomGesture = function _completeZoomGesture() {
@@ -3287,8 +3288,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					if (!out) {
 
 						// "in" animation always uses CSS transitions (instead of rAF).
-						// CSS transition work faster here,
-						// as developer may also want to animate other things,
+						// CSS transition work faster here, 
+						// as developer may also want to animate other things, 
 						// like ui on top of sliding area, which can be animated just via CSS
 
 						_currZoomLevel = item.initialZoomLevel;
@@ -3582,6 +3583,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					_getItemAt = self.getItemAt;
 					_getNumItems = _options.getNumItemsFn; //self.getNumItems;
 
+
 					_initialIsLoop = _options.loop;
 					if (_getNumItems() < 3) {
 						_options.loop = false; // disable loop if less then 3 items
@@ -3643,13 +3645,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				},
 
 				allowProgressiveImg: function allowProgressiveImg() {
-					// 1. Progressive image loading isn't working on webkit/blink
+					// 1. Progressive image loading isn't working on webkit/blink 
 					//    when hw-acceleration (e.g. translateZ) is applied to IMG element.
 					//    That's why in PhotoSwipe parent element gets zoom transform, not image itself.
-					//   
+					//    
 					// 2. Progressive image loading sometimes blinks in webkit/blink when applying animation to parent element.
 					//    That's why it's disabled on touch devices (mainly because of swipe transition)
-					//   
+					//    
 					// 3. Progressive image loading sometimes doesn't work in IE (up to 11).
 
 					// Don't allow progressive loading on non-large touch devices
@@ -4106,7 +4108,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				clearTimeout(_hashAnimCheckTimeout);
 			}
 		},
-		   
+
 
 		// pid - Picture index
 		// gid - Gallery index
@@ -4305,7 +4307,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				},
 				updateURL: function updateURL() {
 
-					// Delay the update of URL, to avoid lag during transition,
+					// Delay the update of URL, to avoid lag during transition, 
 					// and to not to trigger actions like "refresh page sound" or "blinking favicon" to often
 
 					_cleanHistoryTimeouts();
@@ -4317,8 +4319,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					if (!_historyChanged) {
 						_updateHash(); // first time
 					} else {
-							_historyUpdateTimeout = setTimeout(_updateHash, 800);
-						}
+						_historyUpdateTimeout = setTimeout(_updateHash, 800);
+					}
 				}
 
 			}
@@ -4333,18 +4335,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
-};
-
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.PhotoSwipe = exports.default = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var _PhotoSwipe = require('/Applications/MAMP/htdocs/jquery.photoswipe/node_modules/photoswipe/dist/photoswipe.js');
 
@@ -4354,11 +4350,9 @@ var _PhotoSwipeUI_Default = require('/Applications/MAMP/htdocs/jquery.photoswipe
 
 var _PhotoSwipeUI_Default2 = _interopRequireDefault(_PhotoSwipeUI_Default);
 
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function PhotoSwipeFactory($) {
+function PhotoSwipeMounter($) {
     var $defaultGallery = $('<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>').appendTo('body'),
         uid = 1;
 
@@ -4370,8 +4364,12 @@ function PhotoSwipeFactory($) {
                 tagName = this.tagName.toUpperCase();
 
             if (tagName === 'A') {
-                $img = $img.find('img').eq(0);
-                $img.data('original-src', this.href);
+                if (this.hash) {
+                    $img = $(this.hash);
+                } else {
+                    $img = $img.find('img').eq(0);
+                    $img.data('original-src', this.href);
+                }
             } else if (tagName !== 'IMG') {
                 $img = $img.find('img');
             }
@@ -4440,15 +4438,21 @@ function PhotoSwipeFactory($) {
             original_src = $img.data('original-src') || $img.attr('src'),
             d = $.Deferred();
 
-        getImgSize($img).done(function (w, h) {
+        if (this.tagName !== 'IMG') {
             d.resolve({
-                w: w,
-                h: h,
-                src: original_src,
-                msrc: $img.attr('src'),
-                title: $img.attr('alt')
+                html: this.innerHTML
             });
-        });
+        } else {
+            getImgSize($img).done(function (w, h) {
+                d.resolve({
+                    w: w,
+                    h: h,
+                    src: original_src,
+                    msrc: $img.attr('src'),
+                    title: $img.attr('alt')
+                });
+            });
+        }
 
         return d.promise();
     }
@@ -4570,8 +4574,7 @@ function PhotoSwipeFactory($) {
             }
 
             var $gallery = $(this).data('photoswipeOptions', { slideSelector: slideSelector, globalOptions: globalOptions, events: events }),
-
-            // save options
+                // save options
             $imgs = getImgs($gallery),
                 imgInfoArrayPromise = getImgInfoArray($imgs);
 
@@ -4595,10 +4598,10 @@ function PhotoSwipeFactory($) {
 }
 
 
- PhotoSwipeFactory(jQuery);
+ PhotoSwipeMounter(jQuery);
  
 
-exports.default = PhotoSwipeFactory;
+exports.default = PhotoSwipeMounter;
 exports.PhotoSwipe = _PhotoSwipe2.default;
 
 },{"/Applications/MAMP/htdocs/jquery.photoswipe/node_modules/photoswipe/dist/photoswipe-ui-default.js":1,"/Applications/MAMP/htdocs/jquery.photoswipe/node_modules/photoswipe/dist/photoswipe.js":2}]},{},[3]);

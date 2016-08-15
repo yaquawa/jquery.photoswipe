@@ -63,7 +63,8 @@ There are three parameters of the method `photoSwipe`.
  <dd>
  <p>The selector of slides, the default selector is <code>'img'</code>.</p>
  <p>Make sure you include a <code>img</code> tag inside of the selected element, or you can just use a "bare img tag" just like the above sample markup.</p>
- <p>If this selector indicates <code>a</code> tag, the attribute <code>href</code> will be used as the "original image url" of that image.</p>
+ <p>If this selector indicates an <code>a</code> tag, the attribute <code>href</code> will be used as the "original image url" of that image.</p>
+ <p>If this selector indicates an <code>a</code> tag, and the value of the attribute <code>href</code> begin with the <code>#</code> that point to an element, the inner html of the pointed element will be shown.</p>
  </dd>
  <dt><code>options</code></dt>
  <dd>The <a href="http://photoswipe.com/documentation/options.html" target="_blank">options</a> passed to PhotoSwipe.</dd>
@@ -93,9 +94,9 @@ After adding or removing slides of a gallery dynamically, all you need to do is 
 The source code is written in ECMAScript 6 (Browserify + Babelify), so you can easily import it by
 
 ```js
-import PhotoSwipeFactory from 'jquery.photoswipe';
+import PhotoSwipeMounter from 'jquery.photoswipe';
 
-PhotoSwipeFactory(jQuery); // mount this plugin into jQuery
+PhotoSwipeMounter(jQuery); // mount this plugin into jQuery
 ```
 
 Also you should install it by `npm install jquery.photoswipe`.
