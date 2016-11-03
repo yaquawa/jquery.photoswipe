@@ -1,5 +1,5 @@
-import PhotoSwipe from 'PhotoSwipe';
-import PhotoSwipeUI_Default from 'PhotoSwipeUI_Default';
+import PhotoSwipe from 'photoswipe';
+import PhotoSwipeUI_Default from './libs/photoswipe-ui-default';
 
 
 function PhotoSwipeMounter($) {
@@ -90,12 +90,48 @@ function PhotoSwipeMounter($) {
             });
         } else {
             getImgSize($img).done(function (w, h) {
+                var src = $img.attr('src'),
+                    title,
+                    caption_classname,
+                    $figcaption;
+
+                function get_caption($elem, selector) {
+                    var $parent = $elem.parent(),
+                        $caption_element;
+
+                    if (!$parent.length) {
+                        return undefined;
+                    }
+
+                    $caption_element = $parent.find(selector);
+                    if ($caption_element.length) {
+                        return $caption_element.html();
+                    }
+
+                    return get_caption($parent, selector);
+                }
+
+                // try to find the slide title from :
+                // (in order)
+                //
+                // 1. `data-caption` (a class-name indicate the caption element)
+                // 2. `figcaption` element (the `figcaption` that resides inside a `figure` which contains the slide `img` element)
+                // 3. `alt` attribute (the `alt` attribute of the slide `img` element)
+
+                if (caption_classname = $img.data('caption')) {
+                    title = get_caption($img, '.' + caption_classname);
+                } else if (($figcaption = $img.closest('figure').find('figcaption')) && $figcaption.length) {
+                    title = $figcaption.html();
+                } else {
+                    title = $img.attr('alt');
+                }
+
                 d.resolve({
                     w: w,
                     h: h,
                     src: original_src,
-                    msrc: $img.attr('src'),
-                    title: $img.attr('alt')
+                    msrc: src,
+                    title: title
                 });
             });
         }

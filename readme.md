@@ -9,7 +9,7 @@ The CSS files are provided by [PhotoSwipe](https://github.com/dimsemenov/PhotoSw
 Note that this plugin already included the PhotoSwipe, so you don't have to include it yourself.   
 Also, you can access the `PhotoSwipe` class by referring `$.fn.photoSwipe.PhotoSwipe`.
 
-I recommended that you install this plugin by NPM `npm install jquery.photoswipe`.
+I recommend that you install this plugin by NPM `npm install jquery.photoswipe`.
 
 ```html
 <!-- CSS file -->
@@ -31,7 +31,17 @@ The markup is something like this.
       `data-original-src` : The url of original image 
       `data-original-src-width` : The width of original image 
       `data-original-src-height` : The height of original image
-      `alt`: The caption text of this image.
+      
+      ** About the caption text **
+      The plugin will try to find the caption text from:
+      1. `data-caption` attribute
+         The value is a class name that indicate the element which contains the caption text.
+         
+      2. `figcaption` element
+         The `figcaption` element that resides inside a `figure` which contains the slide `img` element.
+         
+      3. `alt` attribute
+         The `alt` attribute of the slide `img` element.
     -->
     <img src="images/IMG_2969--thumbnail.jpg" data-original-src="images/IMG_2969.jpg" data-original-src-width="2000" data-original-src-height="2000" alt="caption text">
 
