@@ -34,8 +34,8 @@ The markup is something like this.
       
       ** About the caption text **
       The plugin will try to find the caption text from:
-      1. `data-caption` attribute
-         The value is a class name that indicate the element which contains the caption text.
+      1. `data-caption-class` attribute
+         The value is a class name that indicates the element which contains the caption text.
          
       2. `figcaption` element
          The `figcaption` element that resides inside a `figure` which contains the slide `img` element.
