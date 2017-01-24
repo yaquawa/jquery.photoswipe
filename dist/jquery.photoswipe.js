@@ -3725,8 +3725,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PhotoSwipe = exports.default = undefined;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 var _photoswipe = require('photoswipe');
 
 var _photoswipe2 = _interopRequireDefault(_photoswipe);
@@ -3801,18 +3799,12 @@ function PhotoSwipeMounter($) {
             matches = original_src.match(/(\d+)[*×x](\d+)/);
 
         if (matches !== null) {
-            var _ret = function () {
-                // resolve width and height by file name
-                var d = $.Deferred();
-                setTimeout(function () {
-                    d.resolve(Number(matches[1]), Number(matches[2]));
-                }, 0);
-                return {
-                    v: d.promise()
-                };
-            }();
-
-            if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+            // resolve width and height by file name
+            var d = $.Deferred();
+            setTimeout(function () {
+                d.resolve(Number(matches[1]), Number(matches[2]));
+            }, 0);
+            return d.promise();
         }
 
         return $.when(getWidth($img), getHeight($img));
@@ -3853,9 +3845,9 @@ function PhotoSwipeMounter($) {
                 // try to find the slide title from :
                 // (in order)
                 //
-                // 1. `data-caption-class` (a class-name that indicates the element containing the caption)
-                // 2. `figcaption` element (the `figcaption` that resides inside a `figure` which contains the slide `img` element)
-                // 3. `alt` attribute (the `alt` attribute of the slide `img` element)
+                // 1. 'data-caption-class' (a class-name that indicates the element containing the caption)
+                // 2. 'figcaption' element (the 'figcaption' that resides inside a 'figure' which contains the slide 'img' element)
+                // 3. 'alt' attribute (the 'alt' attribute of the slide 'img' element)
 
                 if (caption_classname = $img.data('caption-class')) {
                     title = get_caption($img, '.' + caption_classname);
@@ -3939,16 +3931,14 @@ function PhotoSwipeMounter($) {
         // Parse URL and open gallery if it contains #&pid=3&gid=1
         var hashData = photoswipeParseHash();
         if (hashData.pid && hashData.gid) {
-            (function () {
-                var $gallery = $galleries[hashData.gid - 1],
-                    pid = hashData.pid - 1,
-                    $imgs = getImgs($gallery),
-                    imgInfoArrayPromise = getImgInfoArray($imgs);
+            var $gallery = $galleries[hashData.gid - 1],
+                pid = hashData.pid - 1,
+                $imgs = getImgs($gallery),
+                imgInfoArrayPromise = getImgInfoArray($imgs);
 
-                imgInfoArrayPromise.done(function (imgInfoArray) {
-                    openPhotoSwipe(pid, $gallery, $imgs, imgInfoArray);
-                });
-            })();
+            imgInfoArrayPromise.done(function (imgInfoArray) {
+                openPhotoSwipe(pid, $gallery, $imgs, imgInfoArray);
+            });
         }
     }
 
@@ -3974,9 +3964,9 @@ function PhotoSwipeMounter($) {
     }
 
     $.fn.photoSwipe = function () {
-        var slideSelector = arguments.length <= 0 || arguments[0] === undefined ? 'img' : arguments[0];
-        var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-        var events = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+        var slideSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'img';
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var events = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
         var defaultOptions = {
             bgOpacity: 0.973,
@@ -4030,7 +4020,7 @@ exports.PhotoSwipe = _photoswipe2.default;
 },{"./libs/photoswipe-ui-default":3,"photoswipe":1}],3:[function(require,module,exports){
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*! PhotoSwipe Default UI - 4.1.1 - 2015-12-24
 * http://photoswipe.com
