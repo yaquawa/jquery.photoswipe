@@ -42,12 +42,12 @@ function PhotoSwipeMounter($) {
 
     function getWH(wh, $img) {
         var d        = $.Deferred(),
-            wh_value = $img.data(`original-src-${wh}`);
+            wh_value = $img.data('original-src-' + wh);
 
         if (wh_value) {
             d.resolve(wh_value);
         } else {
-            $(`<img>`).on('load', function () {
+            $('<img>').on('load', function () {
                 d.resolve(this[wh]);
             }).attr('src', $img.attr('src'));
         }
@@ -69,7 +69,7 @@ function PhotoSwipeMounter($) {
 
         if (matches !== null) {
             // resolve width and height by file name
-            let d = $.Deferred();
+            var d = $.Deferred();
             setTimeout(function () {
                 d.resolve(Number(matches[1]), Number(matches[2]));
             }, 0);
@@ -114,9 +114,9 @@ function PhotoSwipeMounter($) {
                 // try to find the slide title from :
                 // (in order)
                 //
-                // 1. `data-caption-class` (a class-name that indicates the element containing the caption)
-                // 2. `figcaption` element (the `figcaption` that resides inside a `figure` which contains the slide `img` element)
-                // 3. `alt` attribute (the `alt` attribute of the slide `img` element)
+                // 1. 'data-caption-class' (a class-name that indicates the element containing the caption)
+                // 2. 'figcaption' element (the 'figcaption' that resides inside a 'figure' which contains the slide 'img' element)
+                // 3. 'alt' attribute (the 'alt' attribute of the slide 'img' element)
 
                 if (caption_classname = $img.data('caption-class')) {
                     title = get_caption($img, '.' + caption_classname);
@@ -201,7 +201,7 @@ function PhotoSwipeMounter($) {
         // Parse URL and open gallery if it contains #&pid=3&gid=1
         var hashData = photoswipeParseHash();
         if (hashData.pid && hashData.gid) {
-            let $gallery            = $galleries[hashData.gid - 1],
+            var $gallery            = $galleries[hashData.gid - 1],
                 pid                 = hashData.pid - 1,
                 $imgs               = getImgs($gallery),
                 imgInfoArrayPromise = getImgInfoArray($imgs);
