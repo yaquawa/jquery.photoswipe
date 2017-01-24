@@ -42,12 +42,12 @@ function PhotoSwipeMounter($) {
 
     function getWH(wh, $img) {
         var d        = $.Deferred(),
-            wh_value = $img.data(`original-src-${wh}`);
+            wh_value = $img.data('original-src-' + wh);
 
         if (wh_value) {
             d.resolve(wh_value);
         } else {
-            $(`<img>`).on('load', function () {
+            $('<img>').on('load', function () {
                 d.resolve(this[wh]);
             }).attr('src', $img.attr('src'));
         }
@@ -114,9 +114,9 @@ function PhotoSwipeMounter($) {
                 // try to find the slide title from :
                 // (in order)
                 //
-                // 1. `data-caption-class` (a class-name that indicates the element containing the caption)
-                // 2. `figcaption` element (the `figcaption` that resides inside a `figure` which contains the slide `img` element)
-                // 3. `alt` attribute (the `alt` attribute of the slide `img` element)
+                // 1. 'data-caption-class' (a class-name that indicates the element containing the caption)
+                // 2. 'figcaption' element (the 'figcaption' that resides inside a 'figure' which contains the slide 'img' element)
+                // 3. 'alt' attribute (the 'alt' attribute of the slide 'img' element)
 
                 if (caption_classname = $img.data('caption-class')) {
                     title = get_caption($img, '.' + caption_classname);
