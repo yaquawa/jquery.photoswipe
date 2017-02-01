@@ -3817,6 +3817,14 @@ function PhotoSwipeMounter($) {
 
         return $.when(getWidth($img), getHeight($img));
     }
+	
+    function getCustomPid($img) {
+        var d = $.Deferred(),
+            pid_value = $img.data('pid');
+		d.resolve(pid_value);
+
+        return d.promise();
+    }
 
     function getImgInfo() {
         var $img = $(this),
@@ -3865,13 +3873,21 @@ function PhotoSwipeMounter($) {
                     title = $img.attr('alt');
                 }
 
-                d.resolve({
+				var resolveObj = {
                     w: w,
                     h: h,
                     src: original_src,
                     msrc: src,
                     title: title
-                });
+                };
+				
+				getCustomPid($img).done(function(pid) {
+					if (pid) {
+						resolveObj.pid = pid;
+					}
+				});
+
+                d.resolve(resolveObj);
             });
         }
 

@@ -31,6 +31,7 @@ The markup is something like this.
       `data-original-src` : The url of original image 
       `data-original-src-width` : The width of original image 
       `data-original-src-height` : The height of original image
+      `data-pid` : The custom `pid` you'd like this image to have.
       
       ** About the caption text **
       The plugin will try to find the caption text from:
