@@ -47,9 +47,10 @@ function PhotoSwipeMounter($) {
         if (wh_value) {
             d.resolve(wh_value);
         } else {
+            var originalSrc = $img.data('original-src') || $img.attr('src');
             $(`<img>`).on('load', function () {
                 d.resolve(this[wh]);
-            }).attr('src', $img.attr('src'));
+            }).attr('src', originalSrc);
         }
 
         return d.promise();
