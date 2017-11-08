@@ -41,11 +41,15 @@ function PhotoSwipeMounter($) {
     }
 
     function getWH(wh, $img) {
-        var d        = $.Deferred(),
-            wh_value = $img.data(`original-src-${wh}`);
+        var d            = $.Deferred(),
+            wh_value     = $img.data(`original-src-${wh}`),
+            original_src = decodeURI($img.data('original-src') || $img.attr('src')),
+            matches      = original_src.match(/(\d+)[*×x](\d+)/);
 
         if (wh_value) {
             d.resolve(wh_value);
+        } else if (matches !== null) {
+            d.resolve(matches[(wh === 'width' ? 1 : 2)]);
         } else {
             $(`<img>`).on('load', function () {
                 d.resolve(this[wh]);
@@ -64,18 +68,6 @@ function PhotoSwipeMounter($) {
     }
 
     function getImgSize($img) {
-        var original_src = decodeURI($img.data('original-src') || $img.attr('src')),
-            matches      = original_src.match(/(\d+)[*×x](\d+)/);
-
-        if (matches !== null) {
-            // resolve width and height by file name
-            let d = $.Deferred();
-            setTimeout(function () {
-                d.resolve(Number(matches[1]), Number(matches[2]));
-            }, 0);
-            return d.promise();
-        }
-
         return $.when(getWidth($img), getHeight($img));
     }
 
