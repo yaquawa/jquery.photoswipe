@@ -51,9 +51,10 @@ function PhotoSwipeMounter($) {
         } else if (matches !== null) {
             d.resolve(matches[(wh === 'width' ? 1 : 2)]);
         } else {
+            var originalSrc = $img.data('original-src') || $img.attr('src');
             $(`<img>`).on('load', function () {
                 d.resolve(this[wh]);
-            }).attr('src', $img.attr('src'));
+            }).attr('src', originalSrc);
         }
 
         return d.promise();
